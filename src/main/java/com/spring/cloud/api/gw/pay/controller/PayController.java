@@ -11,23 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping(path = "/pay")
+@RequestMapping(path = "/")
 @RequiredArgsConstructor
 public class PayController {
 
     private final PayService payService;
 
-    @GetMapping(path = "/")
+    @GetMapping
     ResponseEntity<String> getHello() {
-        return ResponseEntity.ok("pay hello");
+        String hello = payService.getHello();
+        return ResponseEntity.ok(hello);
     }
 
     /**
-     * http://localhost:8092/pay/type?type=kakao
+     * http://localhost:8092/pay?payType=kakao&price=1000
      */
-    @RequestMapping(path = "/type")
-    ResponseEntity<String> getType(@RequestParam String type) {
-        String result = payService.getType(type);
+    @RequestMapping(path = "/pay")
+    ResponseEntity<String> getPay(@RequestParam String payType, @RequestParam int price) {
+        String result = payService.getPay(payType, price);
         return ResponseEntity.ok(result);
     }
 }

@@ -5,7 +5,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PayService {
 
-    public String getType(String pay) {
-        return pay + "=1000";
+    public String getHello() {
+        return "pay hello";
+    }
+
+    public String getPay(String payType, int price) {
+//        String s = RandomStringUtils.randomNumeric(10);
+        return payType + " pay / " + price + " Won";
     }
 }
