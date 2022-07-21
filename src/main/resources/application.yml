@@ -1,6 +1,19 @@
 server:
   port: 8092
 
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  #  devtools:
+  #    livereload:
+  #      enabled: true
+  #    restart:
+  #      enabled: true
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
 # 나자신은 등록하지 않음
 # 마이크로 서비스 인스턴스 목록을 로컬에 캐시할 것인지의 여부
 eureka:
@@ -13,13 +26,3 @@ eureka:
 logging:
   level:
     com.spring.cloud.api.gw: DEBUG
-
-spring:
-  devtools:
-    livereload:
-      enabled: true
-    restart:
-      enabled: true
-  jackson:
-    serialization:
-      INDENT_OUTPUT: true
