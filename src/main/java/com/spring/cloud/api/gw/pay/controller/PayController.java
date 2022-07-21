@@ -28,6 +28,7 @@ public class PayController {
      */
     @RequestMapping(path = "/pay")
     ResponseEntity<String> getPay(@RequestParam String payType, @RequestParam int price) {
+        log.debug("=============");
         String result = payService.getPay(payType, price);
         return ResponseEntity.ok(result);
     }
